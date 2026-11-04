@@ -28,7 +28,7 @@
         "## MiniMax H3 Multiangle Image Edit\n\n1. Choose a reference image in Load Image.\n2. Set the camera angle and framing in Qwen Multiangle Camera. Leave Default Prompts enabled.\n3. Turn Match Background View on to keep the original scene from the new camera viewpoint, or off to request a plain background.\n4. Optionally add an edit instruction in Additional Prompt, then queue the workflow.\n\nThe adapter sends the camera prompt to p-h3-image Conditioning. The image resize control sets a target pixel count in megapixels. Save Animated WEBP writes to ComfyUI's standard output folder.\n\nRequires ComfyUI 0.44.0 or later, Qwen Multiangle Camera, and H3 Camera Prompt Adapter."
       ],
       "widgets_values_named": {
-        "text": "## p-h3-image\n\n**Text to image:** write your request after `Request:` in the Prompt upsampler. Width and height 0 give 2912x2912.\n\n**Image edit:** the source image goes into `Load Image`; the result matches its shape, so `width`/`height` on the conditioning follow the image automatically.\n\n**Prompt format:** write `Aspect ratio: <ratio>` then `Request: <what to change>`. The model keeps the composition when the request is one short sentence.\n\nOther shapes: set width and height on p-h3-image Conditioning and change `Aspect ratio:` to match.\n\n| Ratio | Size |\n| --- | --- |\n| 4:3 | 3360x2496 |\n| 3:2 | 3552x2368 |\n| 16:9 | 3872x2176 |\n\nSwap the sides for portrait, for example `Aspect ratio: 3:4` with 2496x3360.\n"
+        "text": "## MiniMax H3 Multiangle Image Edit\n\n1. Choose a reference image in Load Image.\n2. Set the camera angle and framing in Qwen Multiangle Camera. Leave Default Prompts enabled.\n3. Turn Match Background View on to keep the original scene from the new camera viewpoint, or off to request a plain background.\n4. Optionally add an edit instruction in Additional Prompt, then queue the workflow.\n\nThe adapter sends the camera prompt to p-h3-image Conditioning. The image resize control sets a target pixel count in megapixels. Save Animated WEBP writes to ComfyUI's standard output folder.\n\nRequires ComfyUI 0.44.0 or later, Qwen Multiangle Camera, and H3 Camera Prompt Adapter."
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -260,12 +260,6 @@
           "link": 87
         },
         {
-          "label": "Match Background View",
-          "name": "switch",
-          "type": "BOOLEAN",
-          "link": null
-        },
-        {
           "name": "prompt",
           "type": "STRING",
           "link": 85
@@ -310,8 +304,8 @@
         "match_background_view": true,
         "vae_name": "p-h3-image_vae_int8_convrot.safetensors",
         "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
-        "lora_name": "P-H3-Image\\p-h3-image_lora_bf16.safetensors",
-        "unet_name": "minimax\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "lora_name": "p-h3-image_lora_bf16.safetensors",
+        "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
         "noise_seed": 0,
         "string_b": ""
       }
@@ -375,7 +369,7 @@
         "## Model Links and Storage\n\nPlace these files under `ComfyUI/models/`.\n\n**diffusion_models/**\n- [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n\n**text_encoders/**\n- [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n\n**vae/**\n- [p-h3-image_vae_int8_convrot.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/vae/p-h3-image_vae_int8_convrot.safetensors)\n\n**loras/**\n- [p-h3-image_lora_bf16.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/loras/p-h3-image_lora_bf16.safetensors)\n"
       ],
       "widgets_values_named": {
-        "text": "## Model Links\n\n- [Hugging Face:Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)\n- [Hugging Face:PrunaAI/p-h3-image-comfy](https://huggingface.co/PrunaAI/p-h3-image-comfy)\n\n**diffusion_models**\n\n- [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (19.53 GB)\n\n**text_encoders**\n\n- [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n\n**vae**\n\n- [p-h3-image_vae_int8_convrot.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/vae/p-h3-image_vae_int8_convrot.safetensors)\n\n**loras**\n\n- [p-h3-image_lora_bf16.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/loras/p-h3-image_lora_bf16.safetensors)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n│   ├── 📂 vae/\n│   │   └── p-h3-image_vae_int8_convrot.safetensors\n│   └── 📂 loras/\n│       └── p-h3-image_lora_bf16.safetensors\n```\n"
+        "text": "## Model Links and Storage\n\nPlace these files under `ComfyUI/models/`.\n\n**diffusion_models/**\n- [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors)\n\n**text_encoders/**\n- [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n\n**vae/**\n- [p-h3-image_vae_int8_convrot.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/vae/p-h3-image_vae_int8_convrot.safetensors)\n\n**loras/**\n- [p-h3-image_lora_bf16.safetensors](https://huggingface.co/PrunaAI/p-h3-image-comfy/resolve/main/loras/p-h3-image_lora_bf16.safetensors)\n"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -419,7 +413,7 @@
       34,
       0,
       46,
-      3,
+      2,
       "STRING"
     ],
     [
@@ -427,7 +421,7 @@
       34,
       1,
       46,
-      4,
+      3,
       "LOAD3D_CAMERA"
     ],
     [
@@ -435,7 +429,7 @@
       26,
       0,
       46,
-      5,
+      4,
       "IMAGE"
     ]
   ],
@@ -568,16 +562,6 @@
             "pos": [
               -134.55859375,
               225
-            ]
-          },
-          {
-            "id": "c860dd46-88fc-40f4-b2f8-22176921f259",
-            "name": "switch",
-            "type": "BOOLEAN",
-            "linkIds": [],
-            "pos": [
-              -134.55859375,
-              245
             ]
           },
           {
@@ -794,7 +778,7 @@
               "default"
             ],
             "widgets_values_named": {
-              "unet_name": "minimax\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+              "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
               "weight_dtype": "default"
             }
           },
@@ -1032,7 +1016,7 @@
               1
             ],
             "widgets_values_named": {
-              "lora_name": "P-H3-Image\\p-h3-image_lora_bf16.safetensors",
+              "lora_name": "p-h3-image_lora_bf16.safetensors",
               "strength_model": 1
             }
           },
@@ -2015,7 +1999,7 @@
           {
             "id": 62,
             "origin_id": -10,
-            "origin_slot": 9,
+            "origin_slot": 8,
             "target_id": 39,
             "target_slot": 0,
             "type": "STRING"
@@ -2023,7 +2007,7 @@
           {
             "id": 63,
             "origin_id": -10,
-            "origin_slot": 10,
+            "origin_slot": 9,
             "target_id": 39,
             "target_slot": 1,
             "type": "LOAD3D_CAMERA"
@@ -2031,7 +2015,7 @@
           {
             "id": 42,
             "origin_id": -10,
-            "origin_slot": 11,
+            "origin_slot": 10,
             "target_id": 6,
             "target_slot": 0,
             "type": "IMAGE"
