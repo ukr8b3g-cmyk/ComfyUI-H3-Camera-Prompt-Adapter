@@ -1,4 +1,6 @@
 # H3 Camera Prompt Adapter
+<img width="1737" height="633" alt="Clip_3" src="https://github.com/user-attachments/assets/e34c2e94-7f5d-4f98-9125-38fa19825a63" />
+
 
 [日本語](#日本語)
 
