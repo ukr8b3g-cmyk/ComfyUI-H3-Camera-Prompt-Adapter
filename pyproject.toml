@@ -1,0 +1,13 @@
+[project]
+name = "comfyui-h3-camera-prompt-adapter"
+description = "Convert Qwen Multiangle Camera output into a camera prompt for MiniMax H3 image editing."
+version = "0.1.0"
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/ukr8b3g-cmyk/ComfyUI-H3-Camera-Prompt-Adapter"
+
+[tool.comfy]
+PublisherId = "ukr8b3g-cmyk"
+DisplayName = "H3 Camera Prompt Adapter"
